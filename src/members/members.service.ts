@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, InternalServerErrorException } from '@nestjs/common';
 import { CreateMemberDto } from './dto/create-member.dto';
 import { PrismaService } from 'src/prisma/prisma.service';
 
@@ -19,7 +19,7 @@ export class MembersService {
         data: member,
       };
     } catch (error: any) {
-      return { message: error.message, data: {} };
+      throw new InternalServerErrorException();
     }
   }
 }
