@@ -12,6 +12,9 @@ export class MembersService {
         data: {
           ...createMember,
         },
+        omit: {
+          deleted_at: true,
+        },
       });
 
       return {
